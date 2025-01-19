@@ -1,0 +1,15 @@
+div#container {
+    display: flex;
+    flex-wrap:wrap;
+    width: 256px;
+    height: 256px;
+    
+}
+
+div.newDivs {
+    width: 16px;
+    height: 16px;
+    border: solid 0.1px black;
+    box-sizing: border-box;
+}
+
