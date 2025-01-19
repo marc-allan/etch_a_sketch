@@ -1,23 +1,66 @@
-// CRIAR de forma dinâmica uma pággina com uma grid de 16x16 divs quadradas usando flexbox
-// 
+// CRIAR de forma dinâmica uma página com uma grid de 16x16 divs quadradas usando flexbox - FEITO
+// CIAR efeito HOVER ao passar o mouse por cima dos divs - FEITO
+// CRIAR mecanismo para redimensionar container conforme contidade de  - TO BE DONE
+    // PEGAR quantidade de quadrados escolhidos
+    //  
 
 
-let container = document.querySelector("div#container")
-let divSize = 16**2
+let container = document.querySelector("div#container");
+let inputDivs = document.querySelector("input#qtdDivs");
+let addBtn = document.querySelector("input#addBtn");
 
-function addRows() {
-    for(let i = 1; i <= divSize; i++) {
+let isMouseDown = false;
+
+
+// START GAME
+// startGame();
+
+// let qtdDivs = 16**2;
+
+for(let i = 1; i <= 16**2; i++) {
+    let newDivs = document.createElement("div");
+    newDivs.className = "newDivs";
+    container.append(newDivs);
+}
+
+// QUANTIDADE DIVS
+
+addBtn.addEventListener ("click", ()=>{
+    container.innerHTML = ""
+    let qtdDivs = Number(inputDivs.value)**2;
+    console.log(qtdDivs);
+    let divSize = 600 / Number(inputDivs.value)
+    console.log(divSize)
+    
+    for(let i = 1; i <= qtdDivs; i++) {
         let newDivs = document.createElement("div");
         newDivs.className = "newDivs";
+        newDivs.style.width = divSize + "px";
+        newDivs.style.height = divSize + "px";
         container.append(newDivs);
-}
-}
-
-addRows();
+    }
+})
 
 
-container.addEventListener ("mouseover",  e => {
+
+
+
+// EFEITO HOVER
+container.addEventListener ("mousedown",  e => {
     if (e.target.matches(".newDivs")){
+        isMouseDown = true;
         e.target.style.backgroundColor = "black";
     }
+})
+
+container.addEventListener ("mousemove",  e => {
+        if (e.target.matches(".newDivs")){
+            if (isMouseDown){
+            e.target.style.backgroundColor = "black";
+            }
+        }
+})
+
+container.addEventListener ("mouseup",  e => {
+    isMouseDown = false;
 })
