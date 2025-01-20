@@ -1,21 +1,13 @@
 // CRIAR de forma dinâmica uma página com uma grid de 16x16 divs quadradas usando flexbox - FEITO
 // CIAR efeito HOVER ao passar o mouse por cima dos divs - FEITO
-// CRIAR mecanismo para redimensionar container conforme contidade de  - TO BE DONE
-    // PEGAR quantidade de quadrados escolhidos
-    //  
+// CRIAR mecanismo para redimensionar container conforme contidade de  - FEITO
 
 
 let container = document.querySelector("div#container");
 let inputDivs = document.querySelector("input#qtdDivs");
 let addBtn = document.querySelector("input#addBtn");
-
 let isMouseDown = false;
 
-
-// START GAME
-// startGame();
-
-// let qtdDivs = 16**2;
 
 for(let i = 1; i <= 16**2; i++) {
     let newDivs = document.createElement("div");
@@ -26,23 +18,23 @@ for(let i = 1; i <= 16**2; i++) {
 // QUANTIDADE DIVS
 
 addBtn.addEventListener ("click", ()=>{
-    container.innerHTML = ""
-    let qtdDivs = Number(inputDivs.value)**2;
-    console.log(qtdDivs);
-    let divSize = 600 / Number(inputDivs.value)
-    console.log(divSize)
-    
-    for(let i = 1; i <= qtdDivs; i++) {
-        let newDivs = document.createElement("div");
-        newDivs.className = "newDivs";
-        newDivs.style.width = divSize + "px";
-        newDivs.style.height = divSize + "px";
-        container.append(newDivs);
-    }
+    if (Number(inputDivs.value) < 1 || Number(inputDivs.value) >100) {
+        alert("insira um valor entre 1 e 100")
+    } else {
+        container.innerHTML = "";
+        let qtdDivs = Number(inputDivs.value)**2;
+        console.log(qtdDivs);
+        let divSize = 700 / Number(inputDivs.value)
+        console.log(divSize)
+
+        for(let i = 1; i <= qtdDivs; i++) {
+            let newDivs = document.createElement("div");
+            newDivs.className = "newDivs";
+            newDivs.style.width = divSize + "px";
+            newDivs.style.height = divSize + "px";
+            container.append(newDivs);
+    }}
 })
-
-
-
 
 
 // EFEITO HOVER
